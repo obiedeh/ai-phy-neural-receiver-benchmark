@@ -65,7 +65,7 @@ def test_index_is_visual_landing_page():
     assert "dashboard.html" in html
     assert "../BUSINESS_CASE.md" in html
     assert "../TECH_BRIEF.md" in html
-    assert "https://github.com/obiedeh/neural-receiver-5g-nr" in html
+    assert "https://github.com/obiedeh/ai-phy-neural-receiver-benchmark" in html
     assert "Neural BER @ 5 dB" in html
     assert "Neural BER @ 10 dB" in html
     assert "Neural BLER @ 12.5 dB" in html
@@ -133,8 +133,8 @@ def test_readme_preserves_links_and_neural_does_not_always_win_boundary():
     readme = _read(ROOT / "README.md")
 
     assert "Open the live dashboard" in readme
-    assert "https://obiedeh.github.io/neural-receiver-5g-nr/reports/index.html" in readme
-    assert "https://obiedeh.github.io/neural-receiver-5g-nr/reports/dashboard.html" in readme
+    assert "https://obiedeh.github.io/ai-phy-neural-receiver-benchmark/reports/index.html" in readme
+    assert "https://obiedeh.github.io/ai-phy-neural-receiver-benchmark/reports/dashboard.html" in readme
     assert "GitHub shows committed HTML files as source code" in readme
     assert "BUSINESS_CASE.md" in readme
     assert "TECH_BRIEF.md" in readme
