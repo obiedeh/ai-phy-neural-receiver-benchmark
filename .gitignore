@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.installed.cfg
+
+# venvs
+.venv/
+.venv2/
+env/
+
+# Testing / linting caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# ML artifacts (regenerated, not committed)
+models/*.pt
+models/*.pth
+models/*.ckpt
+models/onnx/
+*.onnx
+data/*.bin
+data/*.npy
+data/*.npz
+
+# TensorBoard / experiment tracking
+runs/
+lightning_logs/
+mlruns/
+wandb/
+
+# OS noise
+.DS_Store
+Thumbs.db
+*.onnx.data
