@@ -1,0 +1,19 @@
+{
+  "trained_steps": 82000,
+  "bler_classical_5db": 1.0,
+  "bler_neural_5db": 1.0,
+  "delta_bler_5db": 0.0,
+  "snr_points": [
+    -5.0,
+    -2.5,
+    0.0,
+    2.5,
+    5.0,
+    7.5,
+    10.0,
+    12.5,
+    15.0,
+    17.5,
+    20.0
+  ]
+}

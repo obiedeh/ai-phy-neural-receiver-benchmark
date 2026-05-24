@@ -1,0 +1,21 @@
+{
+  "onnx_path": "/home/oedeh/github/neural-receiver-5g-nr/models/neural_rx.onnx",
+  "opset": 17,
+  "input_shape": [
+    4,
+    1,
+    1,
+    14,
+    76
+  ],
+  "output_shape": [
+    4,
+    1,
+    1,
+    1824
+  ],
+  "max_abs_diff": 1.3828277587890625e-05,
+  "mean_abs_diff": 2.4984924493764993e-06,
+  "parity_pass": true,
+  "tolerance": 0.0001
+}

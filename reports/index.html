@@ -1,0 +1,138 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>5G NR Neural Receiver Evidence Pack</title><style>
+:root {
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --panel-2: #f1f5f9;
+  --line: #dbe4ee;
+  --text: #0f172a;
+  --muted: #64748b;
+  --blue: #2563eb;
+  --green: #047857;
+  --amber: #b45309;
+  --red: #b91c1c;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background:
+    linear-gradient(180deg, rgba(37, 99, 235, 0.10), rgba(248, 250, 252, 0.0) 260px),
+    var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.55;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 32px 28px 48px; }
+header { margin-bottom: 24px; }
+header h1 { margin: 0 0 8px; font-size: 36px; letter-spacing: -0.03em; }
+header .sub { color: var(--muted); max-width: 900px; }
+.nav { margin-top: 14px; color: var(--muted); font-size: 14px; }
+.nav a { margin-right: 16px; }
+.hero-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 18px;
+}
+.hero-actions { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; }
+.hero-actions a {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 7px 11px;
+  background: var(--panel-2);
+  font-size: 13px;
+}
+section, .card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 22px;
+  margin-bottom: 18px;
+}
+section h2, .eyebrow {
+  margin: 0 0 4px;
+  color: var(--blue);
+  font-size: 12px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+section h3, .card h3 {
+  margin: 0 0 14px;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+p { margin: 0 0 12px; }
+.kpi-grid, .grid-2, .grid-3, .visual-grid {
+  display: grid;
+  gap: 14px;
+}
+.kpi-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 16px 0; }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3, .visual-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.kpi {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+}
+.kpi-label { color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; }
+.kpi-value { color: var(--text); font-size: 26px; font-weight: 700; margin-top: 4px; }
+.kpi-note { color: var(--muted); font-size: 12px; margin-top: 4px; }
+.good .kpi-value { color: var(--green); }
+.warn .kpi-value { color: var(--amber); }
+.risk .kpi-value { color: var(--red); }
+.badge {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.badge.good { border-color: #047857; color: var(--green); }
+.badge.warn { border-color: #92400e; color: var(--amber); }
+.badge.risk { border-color: #991b1b; color: var(--red); }
+.callout {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.callout h4 { margin: 0 0 6px; font-size: 15px; }
+.plot {
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--line);
+}
+.plot img, .plot svg { width: 100%; height: auto; display: block; }
+.plot-card img { width: 100%; height: auto; display: block; background: #fff; border-radius: 8px; }
+.source { color: var(--muted); font-size: 12px; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0 0; font-size: 14px; }
+th, td { border-bottom: 1px solid var(--line); padding: 9px 10px; text-align: left; vertical-align: top; }
+th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+ul { margin: 8px 0 0 20px; padding: 0; }
+footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 22px; }
+@media (max-width: 900px) {
+  .grid-2, .grid-3, .visual-grid { grid-template-columns: 1fr; }
+  header h1 { font-size: 30px; }
+}
+</style></head><body><div class="wrap"><header><div class="nav"><a href="dashboard.html">Dashboard</a><a href="../BUSINESS_CASE.md">Business case</a><a href="../TECH_BRIEF.md">Technical brief</a><a href="../README.md">README</a></div></header><div class="hero-panel"><h1>5G NR Neural Receiver Evidence Pack</h1><p class="sub">I built a DeepRx-style neural receiver and measured it against a classical LS+LMMSE baseline on the same Sionna TDL-C link.</p><div class="kpi-grid"><div class="kpi good"><div class="kpi-label">Moderate-SNR result</div><div class="kpi-value">2-3 dB</div><div class="kpi-note">effective BER advantage</div></div><div class="kpi good"><div class="kpi-label">BLER @ 12.5 dB</div><div class="kpi-value">0.585</div><div class="kpi-note">classical 0.938</div></div><div class="kpi good"><div class="kpi-label">ONNX parity</div><div class="kpi-value">PASS</div><div class="kpi-note">max_diff=1.38e-05</div></div><div class="kpi good"><div class="kpi-label">Tests</div><div class="kpi-value">31/31</div><div class="kpi-note">recorded passing suite</div></div><div class="kpi warn"><div class="kpi-label">Boundary</div><div class="kpi-value">sim only</div><div class="kpi-note">not live RAN or SDR</div></div></div><div class="hero-actions"><a href="dashboard.html">Open dashboard</a><a href="../BUSINESS_CASE.md">Business case</a><a href="../TECH_BRIEF.md">Technical brief</a><a href="bler_comparison.csv">Measured CSV</a><a href="https://github.com/obiedeh/neural-receiver-5g-nr">GitHub repo</a></div></div><section><h2>Executive Technical Summary</h2><h3>AI-PHY evidence, not deployment theater</h3><p>I built this project around one AI-PHY engineering question: can a DeepRx-style neural receiver learn enough from a Sionna-modeled 5G NR TDL-C channel to beat a classical LS+LMMSE receiver under the same link conditions?</p><div class="kpi-grid"><div class="kpi good"><div class="kpi-label">Neural BER @ 5 dB</div><div class="kpi-value">0.062</div><div class="kpi-note">classical 0.122</div></div><div class="kpi good"><div class="kpi-label">Neural BER @ 10 dB</div><div class="kpi-value">0.014</div><div class="kpi-note">classical 0.026</div></div><div class="kpi good"><div class="kpi-label">Neural BLER @ 12.5 dB</div><div class="kpi-value">0.585</div><div class="kpi-note">classical 0.938</div></div><div class="kpi good"><div class="kpi-label">ONNX parity</div><div class="kpi-value">PASS</div><div class="kpi-note">max_diff=1.38e-05</div></div><div class="kpi good"><div class="kpi-label">Tests</div><div class="kpi-value">31/31</div><div class="kpi-note">recorded passing suite</div></div><div class="kpi warn"><div class="kpi-label">Boundary</div><div class="kpi-value">sim only</div><div class="kpi-note">simulated link evidence</div></div></div></section><section id="why-this-exists"><h2>Why This Exists</h2><h3>Controlled neural receiver evidence</h3><p>Classical 5G receivers separate channel estimation, equalization, and demapping. Neural receivers test whether those steps can be learned jointly when the receiver sees the same channel conditions. I built this repo to make that comparison reproducible, measured, and honest.</p><p>AI-native radio research needs controlled baselines. Neural PHY claims are easy to overstate. This evidence pack compares neural and classical receivers on the same modeled channel, with the same SNR sweep, committed artifacts, and visible limits.</p></section><section><h2>Problem Statement</h2><h3>What this evidence pack answers</h3><p>The neural receiver wins in the moderate-SNR region, improves BLER at 12.5 dB, and passes ONNX parity. The result is bounded: classical remains competitive at high SNR, and this is simulated link evidence only.</p></section><section><h2>What I Built</h2><h3>DeepRx-style receiver on a Sionna-modeled 5G NR link</h3><p>I used the same TDL-C channel setup for the neural and classical paths, preserved the deterministic pilot fix, and committed the plots and JSON artifacts that support the conclusion.</p></section><section><h2>Visual Evidence</h2><h3>Plots first, then interpretation</h3><div class="visual-grid"><section class="card plot-card"><div class="eyebrow">Visual evidence</div><h3>BER/BLER curve: neural wins in the moderate-SNR region</h3><a href="dashboard.html#measured-results"><img src="bler_comparison.svg" alt="BER/BLER curve: neural wins in the moderate-SNR region" /></a><p>The neural receiver improves BER around 5-10 dB while high-SNR limits remain visible.</p><a href="dashboard.html#measured-results">Open artifact</a></section><section class="card plot-card"><div class="eyebrow">Visual evidence</div><h3>12.5 dB BLER: neural receiver produces more error-free frames</h3><a href="bler_comparison.svg"><img src="bler_comparison.svg" alt="12.5 dB BLER: neural receiver produces more error-free frames" /></a><p>BLER improves from 0.938 to 0.585 at 12.5 dB.</p><a href="bler_comparison.svg">Open artifact</a></section><section class="card plot-card"><div class="eyebrow">Visual evidence</div><h3>LLR distribution: receiver confidence shape</h3><a href="llr_distribution_comparison.svg"><img src="llr_distribution_comparison.svg" alt="LLR distribution: receiver confidence shape" /></a><p>The LLR plot shows how the receiver confidence distribution changes at the measured point.</p><a href="llr_distribution_comparison.svg">Open artifact</a></section><section class="card plot-card"><div class="eyebrow">Visual evidence</div><h3>Classical baseline: strong reference path, not a straw man</h3><a href="bler_classical.svg"><img src="bler_classical.svg" alt="Classical baseline: strong reference path, not a straw man" /></a><p>The LS+LMMSE baseline is preserved as a serious receiver reference, especially at high SNR.</p><a href="bler_classical.svg">Open artifact</a></section></div></section><section><h2>Where Neural Wins / Where It Does Not Win</h2><h3>Measured advantage with an honest boundary</h3><p>Neural gains are strongest around 5-12.5 dB. At high SNR, the classical receiver remains competitive, so this is not a claim that neural receivers dominate every operating point.</p></section><section><h2>Engineering Practices That Matter</h2><h3>Deterministic pilots, ONNX parity, tests</h3><p>The deterministic pilot RNG bug was found and fixed. ONNX parity passes, and the recorded suite is 31/31 tests passing. These details matter because they make the curves reproducible and auditable.</p></section><section id="what-this-is"><h2>What This Is</h2><h3>The concrete system layers in this repo</h3><table><thead><tr><th>Layer</th><th>What it does</th></tr></thead><tbody><tr><td>AI-PHY receiver experiment</td><td>Tests learned receiver behavior against a classical baseline.</td></tr>
+<tr><td>Sionna-modeled 5G NR link</td><td>Uses TDL-C/QPSK/CP-OFDM/SISO link conditions.</td></tr>
+<tr><td>Classical receiver baseline</td><td>LS pilot estimation, LMMSE equalization, max-log soft demapping.</td></tr>
+<tr><td>DeepRx-style neural receiver</td><td>Residual CNN that learns joint receiver behavior.</td></tr>
+<tr><td>BER/BLER evidence pack</td><td>Measured curves and tables across SNR.</td></tr>
+<tr><td>ONNX parity export check</td><td>Verifies export correctness against ONNXRuntime.</td></tr>
+<tr><td>Static dashboard</td><td>Packages measured evidence, boundaries, and artifacts for review.</td></tr></tbody></table></section><section id="what-this-is-not"><h2>What This Is Not</h2><h3>Boundaries that keep the evidence honest</h3><table><thead><tr><th>Claim</th><th>What is true instead</th><th>Limit it protects</th></tr></thead><tbody><tr><td>Live 5G deployment</td><td>No, this is simulated link evidence.</td><td>Prevents production overclaiming.</td></tr>
+<tr><td>SDR validated receiver</td><td>No, no hardware-loop validation yet.</td><td>Keeps hardware claims honest.</td></tr>
+<tr><td>O-RAN/gNB integration</td><td>No, no RAN integration is claimed.</td><td>Separates link evidence from RAN integration.</td></tr>
+<tr><td>NVIDIA Aerial integration</td><td>No, this uses Sionna, not Aerial.</td><td>Avoids vendor integration theater.</td></tr>
+<tr><td>MIMO receiver</td><td>No, this is SISO unless implemented otherwise.</td><td>Keeps antenna scope clear.</td></tr>
+<tr><td>Higher-order QAM / LDPC-coded system</td><td>No, QPSK and current uncoded scope only as implemented.</td><td>Avoids unmeasured PHY claims.</td></tr>
+<tr><td>Production-ready AI-RAN component</td><td>No, this is a research-grade evidence pack.</td><td>Preserves deployment boundary.</td></tr></tbody></table></section><section id="evidence-boundary"><h2>Evidence vs Boundary</h2><h3>What is demonstrated, and what is deliberately not claimed</h3><div class="grid-2"><div class="callout"><h4>Evidence demonstrated</h4><ul><li>Sionna-modeled 5G NR TDL-C link</li><li>Classical LS+LMMSE baseline</li><li>DeepRx-style neural receiver</li><li>BER/BLER comparison</li><li>ONNX export parity</li><li>Deterministic pilot fix</li><li>Reproducible artifacts and tests</li></ul></div><div class="callout"><h4>Boundary preserved</h4><ul><li>No live 5G network</li><li>No SDR/hardware-loop validation</li><li>No O-RAN/gNB integration</li><li>No NVIDIA Aerial integration</li><li>No MIMO/higher-order QAM claim</li><li>No LDPC-coded system claim</li><li>No production AI-RAN deployment claim</li></ul></div></div></section><section><h2>Evidence Links</h2><h3>Start here</h3><div class="grid-3"><div class="card"><h3>Dashboard</h3><p>Technical decision summary, receiver comparison, boundaries, and artifacts.</p><a href="dashboard.html">Open dashboard</a></div><div class="card"><h3>Business Case</h3><p>Decision question, finding, engineering value, and boundary.</p><a href="../BUSINESS_CASE.md">Open business case</a></div><div class="card"><h3>Technical Brief</h3><p>Link configuration, receiver paths, evidence artifacts, and known limits.</p><a href="../TECH_BRIEF.md">Open technical brief</a></div><div class="card"><h3>ONNX Parity</h3><p>Export correctness check. This is not production deployment evidence.</p><a href="onnx_parity_test.json">Open JSON</a></div><div class="card"><h3>Training Log</h3><p>Training configuration and convergence trace.</p><a href="training_log.json">Open log</a></div><div class="card"><h3>Source Code</h3><p>Neural receiver, classical baseline, and Sionna link source.</p><a href="https://github.com/obiedeh/neural-receiver-5g-nr">Open repo</a></div></div></section><footer>Simulated Sionna link evidence only. Boundary: live 5G network absent; SDR absent; O-RAN absent; gNB absent; NVIDIA Aerial absent; MIMO absent; LDPC-coded system absent; production AI-RAN absent.</footer></div></body></html>

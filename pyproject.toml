@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "neural-receiver-5g-nr"
+version = "0.2.0"
+description = "DeepRx-pattern neural receiver vs classical LS+LMMSE baseline on a Sionna-modeled 5G NR link (TDL-C, CP-OFDM). PyTorch backend, GPU-accelerated, ONNX-exportable."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "obiedeh" }]
+# torch and sionna are installed manually via the HANDOFF.md recipe because the
+# correct CUDA wheel + Sionna backend depend on the development box. Keep this
+# list intentionally light so a clean `pip install -e .` doesn't pull torch
+# from the default index.
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.10",
+    "matplotlib>=3.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.5",
+]
+edge = [
+    "onnx>=1.15",
+    "onnxruntime>=1.18",
+]
+notebook = ["jupyter>=1.0"]
+
+[tool.setuptools.packages.find]
+include = ["neural_rx*"]
+exclude = ["tests*", "scripts*", "edge*", "reports*", "notebooks*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Block ROS2/ament pytest plugins — they leak in from the system Python
+# on machines with ROS Jazzy installed and break venv pytest runs.
+addopts = """-p no:launch_testing -p no:launch_ros -p no:ament_pep257 \
+             -p no:ament_copyright -p no:ament_xmllint -p no:ament_lint \
+             -p no:ament_flake8 -p no:colcon_core_warnings_stderr"""
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::FutureWarning",
+]
+
+[tool.ruff]
+line-length = 100
+src = ["."]
+exclude = [
+    ".venv/**",
+    "notebooks/legacy/**",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E402", "E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"notebooks/legacy/*.ipynb" = ["E402", "F401", "F811", "F821", "F841", "I001", "B007"]
