@@ -2,7 +2,7 @@
 
 ## Open The Evidence Pack
 
-> [▶ Open the live dashboard](https://obiedeh.github.io/neural-receiver-5g-nr/reports/dashboard.html) · [Landing page](https://obiedeh.github.io/neural-receiver-5g-nr/reports/index.html) · [Business case](BUSINESS_CASE.md) · [Technical brief](TECH_BRIEF.md) · [Validation matrix](VALIDATION_MATRIX.md)
+> [▶ Open the live dashboard](https://obiedeh.github.io/ai-phy-neural-receiver-benchmark/reports/dashboard.html) · [Landing page](https://obiedeh.github.io/ai-phy-neural-receiver-benchmark/reports/index.html) · [Business case](BUSINESS_CASE.md) · [Technical brief](TECH_BRIEF.md) · [Validation matrix](VALIDATION_MATRIX.md)
 
 GitHub shows committed HTML files as source code. Use the live GitHub Pages links above to open the rendered dashboard and landing page.
 

@@ -1,5 +1,5 @@
 {
-  "onnx_path": "/home/oedeh/github/neural-receiver-5g-nr/models/neural_rx.onnx",
+  "onnx_path": "/home/oedeh/github/ai-phy-neural-receiver-benchmark/models/neural_rx.onnx",
   "opset": 17,
   "input_shape": [
     4,

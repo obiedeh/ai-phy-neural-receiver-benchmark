@@ -662,7 +662,7 @@ def build_index(e: dict[str, Any]) -> str:
         '<a href="../BUSINESS_CASE.md">Business case</a>'
         '<a href="../TECH_BRIEF.md">Technical brief</a>'
         '<a href="bler_comparison.csv">Measured CSV</a>'
-        '<a href="https://github.com/obiedeh/neural-receiver-5g-nr">GitHub repo</a>'
+        '<a href="https://github.com/obiedeh/ai-phy-neural-receiver-benchmark">GitHub repo</a>'
         "</div></div>"
     )
     summary = (
@@ -684,7 +684,7 @@ def build_index(e: dict[str, Any]) -> str:
         '<div class="card"><h3>Technical Brief</h3><p>Link configuration, receiver paths, evidence artifacts, and known limits.</p><a href="../TECH_BRIEF.md">Open technical brief</a></div>'
         '<div class="card"><h3>ONNX Parity</h3><p>Export correctness check. This is not production deployment evidence.</p><a href="onnx_parity_test.json">Open JSON</a></div>'
         '<div class="card"><h3>Training Log</h3><p>Training configuration and convergence trace.</p><a href="training_log.json">Open log</a></div>'
-        '<div class="card"><h3>Source Code</h3><p>Neural receiver, classical baseline, and Sionna link source.</p><a href="https://github.com/obiedeh/neural-receiver-5g-nr">Open repo</a></div>'
+        '<div class="card"><h3>Source Code</h3><p>Neural receiver, classical baseline, and Sionna link source.</p><a href="https://github.com/obiedeh/ai-phy-neural-receiver-benchmark">Open repo</a></div>'
         "</div></section>"
     )
     boundary = _evidence_boundary_section()

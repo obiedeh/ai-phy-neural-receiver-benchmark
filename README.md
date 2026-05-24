@@ -8,7 +8,7 @@ The answer is bounded. The neural receiver shows its strongest advantage in the 
 
 ## Open The Evidence Pack
 
-> [▶ Open the live dashboard](https://obiedeh.github.io/neural-receiver-5g-nr/reports/dashboard.html) · [Landing page](https://obiedeh.github.io/neural-receiver-5g-nr/reports/index.html) · [Business case](BUSINESS_CASE.md) · [Technical brief](TECH_BRIEF.md) · [Validation matrix](VALIDATION_MATRIX.md)
+> [▶ Open the live dashboard](https://obiedeh.github.io/ai-phy-neural-receiver-benchmark/reports/dashboard.html) · [Landing page](https://obiedeh.github.io/ai-phy-neural-receiver-benchmark/reports/index.html) · [Business case](BUSINESS_CASE.md) · [Technical brief](TECH_BRIEF.md) · [Validation matrix](VALIDATION_MATRIX.md)
 
 GitHub shows committed HTML files as source code. Use the live GitHub Pages links above to open the rendered dashboard and landing page.
 
@@ -201,8 +201,8 @@ python build_dashboard.py
 
 Then open:
 
-- [Live landing page](https://obiedeh.github.io/neural-receiver-5g-nr/reports/index.html)
-- [▶ Open the live dashboard](https://obiedeh.github.io/neural-receiver-5g-nr/reports/dashboard.html)
+- [Live landing page](https://obiedeh.github.io/ai-phy-neural-receiver-benchmark/reports/index.html)
+- [▶ Open the live dashboard](https://obiedeh.github.io/ai-phy-neural-receiver-benchmark/reports/dashboard.html)
 - [Local dashboard artifact](reports/dashboard.html)
 
 ## Boundaries
