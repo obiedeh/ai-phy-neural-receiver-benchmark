@@ -27,7 +27,7 @@ from sionna.phy.ofdm import (
 )
 
 # ---------------------------------------------------------------------------
-# Default link parameters (locked per HANDOFF.md — do not re-debate)
+# Default link parameters (locked per dated handoff - do not re-debate)
 # ---------------------------------------------------------------------------
 _CARRIER_FREQ_HZ: float = 3.5e9        # 3.5 GHz sub-6 NR band
 _DELAY_SPREAD_S: float = 100e-9        # TDL-C nominal delay spread
