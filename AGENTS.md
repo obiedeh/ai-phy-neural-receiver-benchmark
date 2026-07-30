@@ -2,7 +2,7 @@
 
 **Neural Receiver — 5G NR (DeepRx pattern)**
 Operating instructions for AI coding agents working in this repo.
-Read [HANDOFF.md](HANDOFF.md) first.
+Read [handoff-2026-05-20-1544-CDT.md](handoff-2026-05-20-1544-CDT.md) first.
 
 ---
 
@@ -95,13 +95,13 @@ Runtime: `numpy`, `scipy`, `matplotlib`, `torch`, `sionna`.
 Dev: `pytest`, `ruff`.
 Edge: `onnx`, `onnxruntime`, `onnxruntime-gpu` (optional).
 
-PyTorch with CUDA and Sionna are installed via the manual recipe in [HANDOFF.md §3](HANDOFF.md#3-environment-setup-phase-0). They are not in `[project.dependencies]` because the right CUDA channel and Sionna backend depend on the box.
+PyTorch with CUDA and Sionna are installed via the manual recipe in [handoff-2026-05-20-1544-CDT.md §3](handoff-2026-05-20-1544-CDT.md#3-environment-setup-phase-0). They are not in `[project.dependencies]` because the right CUDA channel and Sionna backend depend on the box.
 
 ---
 
 ## Adding a feature
 
-1. Open a focused commit per phase (see HANDOFF.md §4).
+1. Open a focused commit per phase (see handoff-2026-05-20-1544-CDT.md §4).
 2. Add unit tests in `tests/`.
 3. Update Makefile and CI workflow as needed.
 4. Commit with a clear subject + body explaining why and what's measured.

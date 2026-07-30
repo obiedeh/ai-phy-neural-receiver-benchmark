@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = { text = "MIT" }
 authors = [{ name = "obiedeh" }]
-# torch and sionna are installed manually via the HANDOFF.md recipe because the
+# torch and sionna are installed manually via the dated handoff recipe because the
 # correct CUDA wheel + Sionna backend depend on the development box. Keep this
 # list intentionally light so a clean `pip install -e .` doesn't pull torch
 # from the default index.
