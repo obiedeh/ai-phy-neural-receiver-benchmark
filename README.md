@@ -244,3 +244,10 @@ reports/
 ## License
 
 MIT.
+
+## Project history
+
+Formerly **`neural-receiver-5g-nr`**. Renamed and re-published on 2026-07-30. All 37 files from the previous version are present here, plus one addition.
+
+The pre-rename development history is not in this repository; it is kept
+offline in the superseded working copy (see that repo's README).
