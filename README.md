@@ -247,7 +247,7 @@ MIT.
 
 ## Project history
 
-Formerly **`neural-receiver-5g-nr`**. Renamed and re-published on 2026-07-30. All 37 files from the previous version are present here, plus one addition.
+Formerly **`neural-receiver-5g-nr`**. Renamed and **rewritten** on 2026-07-30. Of the 37 files carried over, 29 are byte-identical to the previous version and 8 were revised (BUSINESS_CASE.md, README.md, TECH_BRIEF.md, build_dashboard.py, pyproject.toml, reports/index.html, reports/onnx_parity_test.json, tests/test_evidence_pack.py); VALIDATION_MATRIX.md is new here.
 
 The pre-rename development history is not in this repository; it is kept
 offline in the superseded working copy (see that repo's README).
