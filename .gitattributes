@@ -1,0 +1,4 @@
+# Generated evidence pages: keep Linguist from classifying the repo as HTML.
+reports/*.html linguist-generated=true
+reports/**/*.html linguist-generated=true
+reports/*.svg linguist-generated=true
