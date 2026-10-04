@@ -1,24 +1,24 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>5G NR Neural Receiver Dashboard</title><style>
 :root {
-  --bg: #f8fafc;
+  --bg: #f6f7f3;
   --panel: #ffffff;
-  --panel-2: #f1f5f9;
-  --line: #dbe4ee;
-  --text: #0f172a;
-  --muted: #64748b;
-  --blue: #2563eb;
-  --green: #047857;
-  --amber: #b45309;
-  --red: #b91c1c;
+  --panel-2: #f0f1ec;
+  --line: #d8dbd2;
+  --text: #1a1c1e;
+  --muted: #5d6459;
+  --blue: #1f6fd1;
+  --green: #4d7c0f;
+  --amber: #c2560c;
+  --red: #c62828;
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
   background:
-    linear-gradient(180deg, rgba(37, 99, 235, 0.10), rgba(248, 250, 252, 0.0) 260px),
+    linear-gradient(180deg, rgba(31, 111, 209, 0.10), rgba(248, 250, 252, 0.0) 260px),
     var(--bg);
   color: var(--text);
-  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.55;
 }
 a { color: var(--blue); text-decoration: none; }
@@ -93,9 +93,9 @@ p { margin: 0 0 12px; }
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
-.badge.good { border-color: #047857; color: var(--green); }
-.badge.warn { border-color: #92400e; color: var(--amber); }
-.badge.risk { border-color: #991b1b; color: var(--red); }
+.badge.good { border-color: #4d7c0f; color: var(--green); }
+.badge.warn { border-color: #a14a0b; color: var(--amber); }
+.badge.risk { border-color: #a32020; color: var(--red); }
 .callout {
   background: var(--panel-2);
   border: 1px solid var(--line);
@@ -123,7 +123,18 @@ footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 2
   .grid-2, .grid-3, .visual-grid { grid-template-columns: 1fr; }
   header h1 { font-size: 30px; }
 }
-</style></head><body><div class="wrap"><header><h1>5G NR Neural Receiver Dashboard</h1><div class="sub">DeepRx-style receiver vs LS+LMMSE baseline on a Sionna TDL-C link. The dashboard shows where neural wins, where classical holds, and what is still outside the evidence boundary.</div><div class="nav"><a href="index.html">Landing page</a><a href="../README.md">README</a><a href="../BUSINESS_CASE.md">Business case</a><a href="../TECH_BRIEF.md">Technical brief</a></div></header><section id="technical-decision-summary"><h2>Technical Decision Summary</h2><h3>What does the AI-PHY experiment prove?</h3><div class="kpi-grid"><div class="kpi good"><div class="kpi-label">BER @ 5 dB</div><div class="kpi-value">0.062</div><div class="kpi-note">classical 0.122</div></div><div class="kpi good"><div class="kpi-label">BER @ 10 dB</div><div class="kpi-value">0.014</div><div class="kpi-note">classical 0.026</div></div><div class="kpi good"><div class="kpi-label">BLER @ 12.5 dB</div><div class="kpi-value">0.585</div><div class="kpi-note">classical 0.938</div></div><div class="kpi good"><div class="kpi-label">ONNX parity</div><div class="kpi-value">PASS</div><div class="kpi-note">max_diff=1.38e-05</div></div></div><table><thead><tr><th>Decision field</th><th>Evidence</th></tr></thead><tbody><tr><td>Experiment</td><td>DeepRx-style neural receiver vs classical LS+LMMSE baseline</td></tr>
+</style><style id="ee-theme">:root{color-scheme:light}h1,h2,h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:500;letter-spacing:-.02em}h1{letter-spacing:-.035em}
+body{margin:0}
+.ee-band{background:#181b1d;border-bottom:1px solid #393d3f;color:#eef1e8;font:14px/1.4 "Helvetica Neue",Helvetica,Arial,sans-serif;position:relative;z-index:50}
+.ee-band .ee-in{max-width:1120px;margin:0 auto;padding:10px 20px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between}
+.ee-band a{color:#a3aa9c;text-decoration:none}.ee-band a:hover{color:#eef1e8}
+.ee-band .ee-mark{display:inline-flex;align-items:center;gap:8px;color:#eef1e8;font-weight:600;letter-spacing:-.01em}
+.ee-band .ee-mark i{display:inline-block;width:14px;height:14px;border-radius:2px;background:linear-gradient(135deg,#b7f34a 0 50%,#68b7ff 50% 100%)}
+.ee-band .ee-mark span{color:#a3aa9c;font-weight:400}.ee-band nav{display:flex;gap:16px}
+.ee-foot{border-top:1px solid #393d3f;background:#181b1d;color:#7c8378;font:13px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif}
+.ee-foot .ee-in{max-width:1120px;margin:0 auto;padding:14px 20px}.ee-foot a{color:#a3aa9c}
+@media print{.ee-band,.ee-foot{background:#fff;color:#5d6459;border-color:#d8dbd2}.ee-band .ee-mark{color:#1a1c1e}}
+</style></head><body><div class="ee-band"><div class="ee-in"><a class="ee-mark" href="https://embodiededge.ai"><i></i>EmbodiedEdge <span>Labs · Evidence</span></a><nav><a href="https://github.com/obiedeh/ai-phy-neural-receiver-benchmark">Repository</a><a href="https://embodiededge.ai">Lab</a><a href="https://github.com/obiedeh">Obinna Edeh</a></nav></div></div><div class="wrap"><header><h1>5G NR Neural Receiver Dashboard</h1><div class="sub">DeepRx-style receiver vs LS+LMMSE baseline on a Sionna TDL-C link. The dashboard shows where neural wins, where classical holds, and what is still outside the evidence boundary.</div><div class="nav"><a href="index.html">Landing page</a><a href="../README.md">README</a><a href="../BUSINESS_CASE.md">Business case</a><a href="../TECH_BRIEF.md">Technical brief</a></div></header><section id="technical-decision-summary"><h2>Technical Decision Summary</h2><h3>What does the AI-PHY experiment prove?</h3><div class="kpi-grid"><div class="kpi good"><div class="kpi-label">BER @ 5 dB</div><div class="kpi-value">0.062</div><div class="kpi-note">classical 0.122</div></div><div class="kpi good"><div class="kpi-label">BER @ 10 dB</div><div class="kpi-value">0.014</div><div class="kpi-note">classical 0.026</div></div><div class="kpi good"><div class="kpi-label">BLER @ 12.5 dB</div><div class="kpi-value">0.585</div><div class="kpi-note">classical 0.938</div></div><div class="kpi good"><div class="kpi-label">ONNX parity</div><div class="kpi-value">PASS</div><div class="kpi-note">max_diff=1.38e-05</div></div></div><table><thead><tr><th>Decision field</th><th>Evidence</th></tr></thead><tbody><tr><td>Experiment</td><td>DeepRx-style neural receiver vs classical LS+LMMSE baseline</td></tr>
 <tr><td>Link model</td><td>Sionna 5G NR, TDL-C, CP-OFDM, QPSK, SISO</td></tr>
 <tr><td>Neural receiver size</td><td>373,154 trainable parameters</td></tr>
 <tr><td>Main finding</td><td>Neural receiver improves BER around 5-10 dB</td></tr>
@@ -7179,4 +7190,4 @@ z
 <tr><td>BER/BLER plot</td><td><a href="bler_comparison.svg">reports/bler_comparison.svg</a></td><td>Visual error-rate comparison.</td></tr>
 <tr><td>LLR plot</td><td><a href="llr_distribution_comparison.svg">reports/llr_distribution_comparison.svg</a></td><td>Receiver confidence distribution.</td></tr>
 <tr><td>ONNX parity</td><td><a href="onnx_parity_test.json">reports/onnx_parity_test.json</a></td><td>Export correctness check.</td></tr>
-<tr><td>Training log</td><td><a href="training_log.json">reports/training_log.json</a></td><td>Training config and convergence trace.</td></tr></tbody></table></section><footer>Simulated Sionna link evidence only. Boundary: live RAN absent; SDR absent; O-RAN absent; gNB absent; NVIDIA Aerial absent; production AI-RAN absent.</footer></div></body></html>
+<tr><td>Training log</td><td><a href="training_log.json">reports/training_log.json</a></td><td>Training config and convergence trace.</td></tr></tbody></table></section><footer>Simulated Sionna link evidence only. Boundary: live RAN absent; SDR absent; O-RAN absent; gNB absent; NVIDIA Aerial absent; production AI-RAN absent.</footer></div><div class="ee-foot"><div class="ee-in">An <a href="https://embodiededge.ai">EmbodiedEdge Labs</a> project. Measured on real hardware, published as found.</div></div></body></html>

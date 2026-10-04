@@ -19,6 +19,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from neural_rx.ee_theme import apply_theme
+
 ROOT = Path(__file__).parent
 REPORTS = ROOT / "reports"
 
@@ -151,25 +153,25 @@ def _load_evidence() -> dict[str, Any]:
 
 CSS = """
 :root {
-  --bg: #f8fafc;
+  --bg: #f6f7f3;
   --panel: #ffffff;
-  --panel-2: #f1f5f9;
-  --line: #dbe4ee;
-  --text: #0f172a;
-  --muted: #64748b;
-  --blue: #2563eb;
-  --green: #047857;
-  --amber: #b45309;
-  --red: #b91c1c;
+  --panel-2: #f0f1ec;
+  --line: #d8dbd2;
+  --text: #1a1c1e;
+  --muted: #5d6459;
+  --blue: #1f6fd1;
+  --green: #4d7c0f;
+  --amber: #c2560c;
+  --red: #c62828;
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
   background:
-    linear-gradient(180deg, rgba(37, 99, 235, 0.10), rgba(248, 250, 252, 0.0) 260px),
+    linear-gradient(180deg, rgba(31, 111, 209, 0.10), rgba(248, 250, 252, 0.0) 260px),
     var(--bg);
   color: var(--text);
-  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.55;
 }
 a { color: var(--blue); text-decoration: none; }
@@ -244,9 +246,9 @@ p { margin: 0 0 12px; }
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
-.badge.good { border-color: #047857; color: var(--green); }
-.badge.warn { border-color: #92400e; color: var(--amber); }
-.badge.risk { border-color: #991b1b; color: var(--red); }
+.badge.good { border-color: #4d7c0f; color: var(--green); }
+.badge.warn { border-color: #a14a0b; color: var(--amber); }
+.badge.risk { border-color: #a32020; color: var(--red); }
 .callout {
   background: var(--panel-2);
   border: 1px solid var(--line);
@@ -715,8 +717,8 @@ def build_index(e: dict[str, Any]) -> str:
 def build() -> None:
     REPORTS.mkdir(exist_ok=True)
     evidence = _load_evidence()
-    dashboard = build_dashboard(evidence)
-    index = build_index(evidence)
+    dashboard = apply_theme(build_dashboard(evidence), repo_url="https://github.com/obiedeh/ai-phy-neural-receiver-benchmark", dark={}, root_selectors=":root", force_dark=False, scheme="light")
+    index = apply_theme(build_index(evidence), repo_url="https://github.com/obiedeh/ai-phy-neural-receiver-benchmark", dark={}, root_selectors=":root", force_dark=False, scheme="light")
 
     dashboard_path = REPORTS / "dashboard.html"
     index_path = REPORTS / "index.html"
