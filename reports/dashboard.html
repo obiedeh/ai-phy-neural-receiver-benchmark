@@ -1,21 +1,21 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>5G NR Neural Receiver Dashboard</title><style>
 :root {
-  --bg: #f6f7f3;
-  --panel: #ffffff;
-  --panel-2: #f0f1ec;
-  --line: #d8dbd2;
-  --text: #1a1c1e;
-  --muted: #5d6459;
-  --blue: #1f6fd1;
-  --green: #4d7c0f;
-  --amber: #c2560c;
-  --red: #c62828;
+  --bg: #202224;
+  --panel: #181b1d;
+  --panel-2: #1c1f21;
+  --line: #393d3f;
+  --text: #eef1e8;
+  --muted: #a3aa9c;
+  --blue: #68b7ff;
+  --green: #b7f34a;
+  --amber: #ff9c59;
+  --red: #ff7a6b;
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
   background:
-    linear-gradient(180deg, rgba(31, 111, 209, 0.10), rgba(248, 250, 252, 0.0) 260px),
+    linear-gradient(180deg, rgba(104, 183, 255, 0.07), rgba(32, 34, 36, 0.0) 260px),
     var(--bg);
   color: var(--text);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -93,9 +93,9 @@ p { margin: 0 0 12px; }
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
-.badge.good { border-color: #4d7c0f; color: var(--green); }
-.badge.warn { border-color: #a14a0b; color: var(--amber); }
-.badge.risk { border-color: #a32020; color: var(--red); }
+.badge.good { border-color: #b7f34a; color: var(--green); }
+.badge.warn { border-color: #ff9c59; color: var(--amber); }
+.badge.risk { border-color: #ff7a6b; color: var(--red); }
 .callout {
   background: var(--panel-2);
   border: 1px solid var(--line);
@@ -123,7 +123,7 @@ footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 2
   .grid-2, .grid-3, .visual-grid { grid-template-columns: 1fr; }
   header h1 { font-size: 30px; }
 }
-</style><style id="ee-theme">:root{color-scheme:light}h1,h2,h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:500;letter-spacing:-.02em}h1{letter-spacing:-.035em}
+</style><style id="ee-theme">:root{color-scheme:dark}h1,h2,h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:500;letter-spacing:-.02em}h1{letter-spacing:-.035em}body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}h1{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-size:clamp(44px,4.6vw,66px)!important;font-weight:500!important;line-height:1!important;letter-spacing:-.06em!important;text-transform:none!important;font-stretch:normal!important}h1 em,h1 .ee-g{font-style:normal;color:#b7f34a!important;-webkit-text-fill-color:#b7f34a}h1 em.b,h1 .ee-b{font-style:normal;color:#68b7ff!important;-webkit-text-fill-color:#68b7ff}section > h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-size:clamp(28px,3.2vw,42px)!important;font-weight:500!important;line-height:1.08!important;letter-spacing:-.04em!important;text-transform:none!important;font-stretch:normal!important;color:inherit}.card > h3{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif!important;font-size:19px!important;font-weight:600!important;line-height:1.25!important;letter-spacing:-.02em!important;text-transform:none!important;font-stretch:normal!important}.ee-eyebrow{font-family:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace!important;font-size:12px!important;font-weight:600!important;letter-spacing:.08em!important;text-transform:uppercase!important;line-height:1.4!important;color:#b7f34a!important}section > h2{font-family:ui-monospace,"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace!important;font-size:12px!important;font-weight:600!important;letter-spacing:.08em!important;text-transform:uppercase!important;line-height:1.4!important;color:#68b7ff!important}
 body{margin:0}
 .ee-band{background:#181b1d;border-bottom:1px solid #393d3f;color:#eef1e8;font:14px/1.4 "Helvetica Neue",Helvetica,Arial,sans-serif;position:relative;z-index:50}
 .ee-band .ee-in{max-width:1120px;margin:0 auto;padding:10px 20px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between}
@@ -134,7 +134,7 @@ body{margin:0}
 .ee-foot{border-top:1px solid #393d3f;background:#181b1d;color:#7c8378;font:13px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif}
 .ee-foot .ee-in{max-width:1120px;margin:0 auto;padding:14px 20px}.ee-foot a{color:#a3aa9c}
 @media print{.ee-band,.ee-foot{background:#fff;color:#5d6459;border-color:#d8dbd2}.ee-band .ee-mark{color:#1a1c1e}}
-</style></head><body><div class="ee-band"><div class="ee-in"><a class="ee-mark" href="https://embodiededge.ai"><i></i>EmbodiedEdge <span>Labs · Evidence</span></a><nav><a href="https://github.com/obiedeh/ai-phy-neural-receiver-benchmark">Repository</a><a href="https://embodiededge.ai">Lab</a><a href="https://github.com/obiedeh">Obinna Edeh</a></nav></div></div><div class="wrap"><header><h1>5G NR Neural Receiver Dashboard</h1><div class="sub">DeepRx-style receiver vs LS+LMMSE baseline on a Sionna TDL-C link. The dashboard shows where neural wins, where classical holds, and what is still outside the evidence boundary.</div><div class="nav"><a href="index.html">Landing page</a><a href="../README.md">README</a><a href="../BUSINESS_CASE.md">Business case</a><a href="../TECH_BRIEF.md">Technical brief</a></div></header><section id="technical-decision-summary"><h2>Technical Decision Summary</h2><h3>What does the AI-PHY experiment prove?</h3><div class="kpi-grid"><div class="kpi good"><div class="kpi-label">BER @ 5 dB</div><div class="kpi-value">0.062</div><div class="kpi-note">classical 0.122</div></div><div class="kpi good"><div class="kpi-label">BER @ 10 dB</div><div class="kpi-value">0.014</div><div class="kpi-note">classical 0.026</div></div><div class="kpi good"><div class="kpi-label">BLER @ 12.5 dB</div><div class="kpi-value">0.585</div><div class="kpi-note">classical 0.938</div></div><div class="kpi good"><div class="kpi-label">ONNX parity</div><div class="kpi-value">PASS</div><div class="kpi-note">max_diff=1.38e-05</div></div></div><table><thead><tr><th>Decision field</th><th>Evidence</th></tr></thead><tbody><tr><td>Experiment</td><td>DeepRx-style neural receiver vs classical LS+LMMSE baseline</td></tr>
+</style></head><body><div class="ee-band"><div class="ee-in"><a class="ee-mark" href="https://embodiededge.ai"><i></i>EmbodiedEdge <span>Labs · Evidence</span></a><nav><a href="https://github.com/obiedeh/ai-phy-neural-receiver-benchmark">Repository</a><a href="https://embodiededge.ai">Lab</a><a href="https://github.com/obiedeh">Obinna Edeh</a></nav></div></div><div class="wrap"><header><div class="ee-eyebrow">Wireless signal AI · Simulation evidence</div><h1>5G NR <span class="ee-b">Neural Receiver</span> <span class="ee-g">Dashboard</span></h1><div class="sub">DeepRx-style receiver vs LS+LMMSE baseline on a Sionna TDL-C link. The dashboard shows where neural wins, where classical holds, and what is still outside the evidence boundary.</div><div class="nav"><a href="index.html">Landing page</a><a href="../README.md">README</a><a href="../BUSINESS_CASE.md">Business case</a><a href="../TECH_BRIEF.md">Technical brief</a></div></header><section id="technical-decision-summary"><h2>Technical Decision Summary</h2><h3>What does the AI-PHY experiment prove?</h3><div class="kpi-grid"><div class="kpi good"><div class="kpi-label">BER @ 5 dB</div><div class="kpi-value">0.062</div><div class="kpi-note">classical 0.122</div></div><div class="kpi good"><div class="kpi-label">BER @ 10 dB</div><div class="kpi-value">0.014</div><div class="kpi-note">classical 0.026</div></div><div class="kpi good"><div class="kpi-label">BLER @ 12.5 dB</div><div class="kpi-value">0.585</div><div class="kpi-note">classical 0.938</div></div><div class="kpi good"><div class="kpi-label">ONNX parity</div><div class="kpi-value">PASS</div><div class="kpi-note">max_diff=1.38e-05</div></div></div><table><thead><tr><th>Decision field</th><th>Evidence</th></tr></thead><tbody><tr><td>Experiment</td><td>DeepRx-style neural receiver vs classical LS+LMMSE baseline</td></tr>
 <tr><td>Link model</td><td>Sionna 5G NR, TDL-C, CP-OFDM, QPSK, SISO</td></tr>
 <tr><td>Neural receiver size</td><td>373,154 trainable parameters</td></tr>
 <tr><td>Main finding</td><td>Neural receiver improves BER around 5-10 dB</td></tr>

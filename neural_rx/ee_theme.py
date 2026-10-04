@@ -38,6 +38,42 @@ LAB_LIGHT = {
 # Headings in the lab's register: medium weight, tight tracking.
 TYPE_CSS = f"h1,h2,h3{{font-family:{SANS};font-weight:500;letter-spacing:-.02em}}h1{{letter-spacing:-.035em}}"
 
+FIELD, SIM = "#b7f34a", "#68b7ff"  # lab accents: green marks the real result, blue the method or test
+
+
+def type_css(eyebrow: str = ".ee-eyebrow", kicker: str = "", title2: str = "h2", title3: str = "h3") -> str:
+    """One type scale for every EmbodiedEdge Labs page (the site case studies use the same sizes).
+
+    eyebrow: label above the page title (green, mono, caps). kicker: label above a section
+    title (blue, mono, caps). title2/title3: the elements that act as section and card titles.
+    """
+    label = f"font-family:{MONO}!important;font-size:12px!important;font-weight:600!important;letter-spacing:.08em!important;text-transform:uppercase!important;line-height:1.4!important"
+    css = (f"body{{font-family:{SANS}}}"
+           f"h1{{font-family:{SANS}!important;font-size:clamp(44px,4.6vw,66px)!important;font-weight:500!important;"
+           f"line-height:1!important;letter-spacing:-.06em!important;text-transform:none!important;font-stretch:normal!important}}"
+           f"h1 em,h1 .ee-g{{font-style:normal;color:{FIELD}!important;-webkit-text-fill-color:{FIELD}}}"
+           f"h1 em.b,h1 .ee-b{{font-style:normal;color:{SIM}!important;-webkit-text-fill-color:{SIM}}}"
+           f"{title2}{{font-family:{SANS}!important;font-size:clamp(28px,3.2vw,42px)!important;font-weight:500!important;"
+           f"line-height:1.08!important;letter-spacing:-.04em!important;text-transform:none!important;font-stretch:normal!important;color:inherit}}"
+           f"{title3}{{font-family:{SANS}!important;font-size:19px!important;font-weight:600!important;line-height:1.25!important;"
+           f"letter-spacing:-.02em!important;text-transform:none!important;font-stretch:normal!important}}"
+           f"{eyebrow}{{{label};color:{FIELD}!important}}")
+    if kicker:
+        css += f"{kicker}{{{label};color:{SIM}!important}}"
+    return css
+
+
+def accent_h1(html: str, accents: list[tuple[str, str]]) -> str:
+    """Color phrases inside the first <h1> without changing its text: ("phrase", "g"|"b")."""
+    m = re.search(r"<h1\b[^>]*>(.*?)</h1>", html, re.DOTALL)
+    if not m or "ee-g" in m.group(1) or "ee-b" in m.group(1):
+        return html
+    inner = m.group(1)
+    for phrase, tone in accents:
+        if phrase in inner:
+            inner = inner.replace(phrase, f'<span class="ee-{tone}">{phrase}</span>', 1)
+    return html[:m.start(1)] + inner + html[m.end(1):]
+
 BAND_CSS = f"""
 body{{margin:0}}
 .ee-band{{background:#181b1d;border-bottom:1px solid #393d3f;color:#eef1e8;font:14px/1.4 {SANS};position:relative;z-index:50}}
@@ -69,12 +105,14 @@ def foot_html() -> str:
 
 def apply_theme(html: str, *, repo_url: str, dark: dict[str, str], light: dict[str, str] | None = None,
                 extra_css: str = "", root_selectors: str = ":root,:root:not([data-theme=\"light\"]),:root[data-theme=\"dark\"]",
-                force_dark: bool = True, scheme: str = "dark") -> str:
+                force_dark: bool = True, scheme: str = "dark", typeset: dict | None = None) -> str:
     """Return html with the lab theme applied. Idempotent: an already themed
     page is returned with its theme block refreshed, not duplicated.
 
     ``dark`` holds the default tokens; ``scheme`` names their color scheme
-    (pass "light" with LAB_LIGHT tokens for a light page)."""
+    (pass "light" with LAB_LIGHT tokens for a light page). ``typeset`` turns on the
+    shared type scale: {"eyebrow", "kicker", "title2", "title3"} selectors, "accents"
+    for the page title and "eyebrow_text" for pages without a label above the title."""
     html = re.sub(r'\s*<style id="ee-theme">.*?</style>', "", html, flags=re.DOTALL)
     html = re.sub(r'<div class="ee-band">.*?</div></div>', "", html, count=1, flags=re.DOTALL)
     html = re.sub(r'<div class="ee-foot">.*?</div></div>', "", html, count=1, flags=re.DOTALL)
@@ -84,8 +122,21 @@ def apply_theme(html: str, *, repo_url: str, dark: dict[str, str], light: dict[s
     if light:
         css += f':root[data-theme="light"]{{{_vars(light)}color-scheme:light}}'
         css += f"@media print{{{root_selectors}{{{_vars(light)}color-scheme:light}}}}"
+    if typeset is not None:
+        opts = {k: v for k, v in typeset.items() if k in ("eyebrow", "kicker", "title2", "title3")}
+        css += type_css(**opts)
+        if typeset.get("accents"):
+            html = accent_h1(html, typeset["accents"])
+        if typeset.get("eyebrow_text") and 'class="ee-eyebrow"' not in html:
+            html = re.sub(r"(<h1\b)", f'<div class="ee-eyebrow">{typeset["eyebrow_text"]}</div>\\1', html, count=1)
     css += BAND_CSS + extra_css
     style = f'<style id="ee-theme">{css}</style>'
+    # declare UTF-8 first thing in the document, so GitHub Pages and every browser agree on it
+    html = html.replace('<meta charset="utf-8">', "", 1) if html.count('<meta charset="utf-8">') == 1 else html
+    if not re.search(r"<meta[^>]+charset", html, re.IGNORECASE):
+        anchor = re.search(r"<head(?:\s[^>]*)?>", html) or re.match(r"\s*<!doctype[^>]*>", html, re.IGNORECASE)
+        pos = anchor.end() if anchor else 0
+        html = html[:pos] + '<meta charset="utf-8">' + html[pos:]
     m = re.search(r"<body[^>]*>", html)
     if m:  # a page with head and body: theme last in the head, band first in the body
         html = html.replace("</head>", style + "</head>", 1) if "</head>" in html else html

@@ -24,6 +24,10 @@ from neural_rx.ee_theme import apply_theme
 ROOT = Path(__file__).parent
 REPORTS = ROOT / "reports"
 
+TYPESET = {"eyebrow": ".ee-eyebrow", "kicker": "section > h2", "title2": "section > h3", "title3": ".card > h3",
+           "accents": [("Neural Receiver", "b"), ("Evidence Pack", "g"), ("Dashboard", "g")],
+           "eyebrow_text": "Wireless signal AI · Simulation evidence"}
+
 
 def _read_json(path: Path) -> dict[str, Any]:
     if not path.exists():
@@ -153,22 +157,22 @@ def _load_evidence() -> dict[str, Any]:
 
 CSS = """
 :root {
-  --bg: #f6f7f3;
-  --panel: #ffffff;
-  --panel-2: #f0f1ec;
-  --line: #d8dbd2;
-  --text: #1a1c1e;
-  --muted: #5d6459;
-  --blue: #1f6fd1;
-  --green: #4d7c0f;
-  --amber: #c2560c;
-  --red: #c62828;
+  --bg: #202224;
+  --panel: #181b1d;
+  --panel-2: #1c1f21;
+  --line: #393d3f;
+  --text: #eef1e8;
+  --muted: #a3aa9c;
+  --blue: #68b7ff;
+  --green: #b7f34a;
+  --amber: #ff9c59;
+  --red: #ff7a6b;
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
   background:
-    linear-gradient(180deg, rgba(31, 111, 209, 0.10), rgba(248, 250, 252, 0.0) 260px),
+    linear-gradient(180deg, rgba(104, 183, 255, 0.07), rgba(32, 34, 36, 0.0) 260px),
     var(--bg);
   color: var(--text);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -246,9 +250,9 @@ p { margin: 0 0 12px; }
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
-.badge.good { border-color: #4d7c0f; color: var(--green); }
-.badge.warn { border-color: #a14a0b; color: var(--amber); }
-.badge.risk { border-color: #a32020; color: var(--red); }
+.badge.good { border-color: #b7f34a; color: var(--green); }
+.badge.warn { border-color: #ff9c59; color: var(--amber); }
+.badge.risk { border-color: #ff7a6b; color: var(--red); }
 .callout {
   background: var(--panel-2);
   border: 1px solid var(--line);
@@ -717,8 +721,8 @@ def build_index(e: dict[str, Any]) -> str:
 def build() -> None:
     REPORTS.mkdir(exist_ok=True)
     evidence = _load_evidence()
-    dashboard = apply_theme(build_dashboard(evidence), repo_url="https://github.com/obiedeh/ai-phy-neural-receiver-benchmark", dark={}, root_selectors=":root", force_dark=False, scheme="light")
-    index = apply_theme(build_index(evidence), repo_url="https://github.com/obiedeh/ai-phy-neural-receiver-benchmark", dark={}, root_selectors=":root", force_dark=False, scheme="light")
+    dashboard = apply_theme(build_dashboard(evidence), repo_url="https://github.com/obiedeh/ai-phy-neural-receiver-benchmark", dark={}, root_selectors=":root", force_dark=False, scheme="dark", typeset=TYPESET)
+    index = apply_theme(build_index(evidence), repo_url="https://github.com/obiedeh/ai-phy-neural-receiver-benchmark", dark={}, root_selectors=":root", force_dark=False, scheme="dark", typeset=TYPESET)
 
     dashboard_path = REPORTS / "dashboard.html"
     index_path = REPORTS / "index.html"
