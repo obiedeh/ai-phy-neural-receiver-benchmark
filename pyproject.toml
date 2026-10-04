@@ -23,6 +23,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0",
+    "pytest-timeout>=2.2",
     "ruff>=0.5",
 ]
 edge = [
