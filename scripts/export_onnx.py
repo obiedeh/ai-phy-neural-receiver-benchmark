@@ -133,8 +133,12 @@ def main() -> None:
         parity_pass = max_abs_diff < 1e-4
 
         result = {
-            "onnx_path": str(onnx_path),
+            "onnx_path": onnx_path.relative_to(MODELS.parent).as_posix(),
             "opset": args.opset,
+            "input_description": (
+                "one batch of 4 frames of random Gaussian noise (torch.randn), "
+                "not channel data; checks export correctness, not receiver accuracy"
+            ),
             "input_shape": list(dummy_y_real.shape),
             "output_shape": list(pt_llrs.shape),
             "max_abs_diff": max_abs_diff,

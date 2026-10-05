@@ -1,6 +1,7 @@
 {
-  "onnx_path": "/home/oedeh/github/ai-phy-neural-receiver-benchmark/models/neural_rx.onnx",
+  "onnx_path": "models/neural_rx.onnx",
   "opset": 17,
+  "input_description": "one batch of 4 frames of random Gaussian noise (torch.randn), not channel data; checks export correctness, not receiver accuracy",
   "input_shape": [
     4,
     1,
