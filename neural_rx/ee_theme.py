@@ -1,5 +1,5 @@
 # ruff: noqa: E501
-"""EmbodiedEdge Labs evidence theme.
+"""EmbodiedEdge evidence theme.
 
 Applies the lab's look (embodiededge.ai) to a self-contained HTML evidence
 page: a shared header band and footer, the lab palette and type mapped onto
@@ -42,7 +42,7 @@ FIELD, SIM = "#b7f34a", "#68b7ff"  # lab accents: green marks the real result, b
 
 
 def type_css(eyebrow: str = ".ee-eyebrow", kicker: str = "", title2: str = "h2", title3: str = "h3") -> str:
-    """One type scale for every EmbodiedEdge Labs page (the site case studies use the same sizes).
+    """One type scale for every EmbodiedEdge page (the site case studies use the same sizes).
 
     eyebrow: label above the page title (green, mono, caps). kicker: label above a section
     title (blue, mono, caps). title2/title3: the elements that act as section and card titles.
@@ -99,7 +99,7 @@ def band_html(repo_url: str, label: str = "Labs · Evidence") -> str:
 
 
 def foot_html() -> str:
-    return (f'<div class="ee-foot"><div class="ee-in">An <a href="{LAB_URL}">EmbodiedEdge Labs</a> project. '
+    return (f'<div class="ee-foot"><div class="ee-in">An <a href="{LAB_URL}">EmbodiedEdge</a> project. '
             'Measured on real hardware, published as found.</div></div>')
 
 
